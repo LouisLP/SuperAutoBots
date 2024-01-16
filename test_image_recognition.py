@@ -15,8 +15,9 @@ def identify_shop():
     shop = []
     for tier, pets in possible_pets_by_tier.items():
         for pet in pets:
-            pet_image = cv2.imread(f'pets/{pet}.png')
+            pet_image = cv2.imread(f'pets/{pet}.png', cv2.IMREAD_GRAYSCALE)
             screen = np.array(pyautogui.screenshot())
+            screen = cv2.cvtColor(screen, cv2.COLOR_RGB2GRAY)
 
             result = cv2.matchTemplate(screen, pet_image, cv2.TM_CCOEFF_NORMED)
             min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
