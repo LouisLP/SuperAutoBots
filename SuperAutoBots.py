@@ -69,7 +69,7 @@ class SuperAutoBots:
             for pet in pets:
                 # Check if the pet is in the shop
                 try:
-                    pet_location = pyautogui.locateCenterOnScreen(f'pets/{pet}.png')
+                    pet_location = pyautogui.locateCenterOnScreen(f'pets/{pet}.png', confidence=0.8)
                     if pet_location is not None:
                         # The pet is in the shop, so add it to the list
                         self.shop.append(pet)
